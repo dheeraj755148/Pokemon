@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/pokemon.css";
 import { Link } from "react-router-dom";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 function Pokemon() {
   useEffect(() => {
@@ -27,7 +26,7 @@ function Pokemon() {
     return (
       <div className="container">
         <div className="d-flex justify-content-center">
-          <h1 className="title">Dexter</h1>
+          <h1 className="title">PokeDex</h1>
         </div>
         <div className="row">
           {pokemonState.map((p) => (
