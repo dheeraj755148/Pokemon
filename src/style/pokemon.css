@@ -102,9 +102,19 @@ h1 {
   color: black;
 }
 
+.pokeball {
+  width: 20px;
+  height: auto;
+}
+
 .images {
   display: block;
   margin: 0 auto;
+}
+
+.rotate {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .card {
@@ -174,7 +184,7 @@ h1 {
 .title {
   color: rgba(255, 255, 255, 0.808);
   text-transform: capitalize;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-decoration: underline;
 }
 
@@ -184,11 +194,11 @@ p {
 
 .list-items {
   text-transform: capitalize;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 
 .sub-headings {
-  font-family: 'Alegreya', serif;
+  font-family: "Alegreya", serif;
   font-size: larger;
   color: blanchedalmond;
 }

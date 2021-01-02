@@ -102,10 +102,17 @@ body {
 h1 {
   color: black;
 }
-
+.pokeball{
+  width: 20px;
+  height: auto;
+}
 .images {
   display: block;
   margin: 0 auto;
+}
+.rotate{
+  transform: rotate(90deg);
+
 }
 .card {
   list-style: none;
@@ -154,40 +161,35 @@ h1 {
     p {
       margin: 0 auto;
     }
-
-
-
   }
 }
 
 .title {
   color: rgba(255, 255, 255, 0.808);
   text-transform: capitalize;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-decoration: underline;
 }
+
 p {
   color: white;
 }
-.list-items{
+.list-items {
   text-transform: capitalize;
-  font-family: 'Merriweather', serif;
-
-
+  font-family: "Merriweather", serif;
 }
-.sub-headings{
-  font-family: 'Alegreya', serif;
+.sub-headings {
+  font-family: "Alegreya", serif;
   font-size: larger;
-  color:blanchedalmond;
-
+  color: blanchedalmond;
 }
-.pokemon-image{
+.pokemon-image {
   width: 200px;
   height: auto;
 }
-.wrong{
+.wrong {
   color: white;
 }
-.oops{
+.oops {
   color: red;
 }

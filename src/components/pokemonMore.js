@@ -9,29 +9,23 @@ function More({ match }) {
     evolution();
   }, []);
 
-  const [data, noData] = useState([]);
-  const [sp, nospecies] = useState([]);
-
-  const [available, notavailable] = useState(false);
+  const [data, noData] = useState([]);    
+  const [sp, nospecies] = useState([]); /* for species */
+  const [available, notavailable] = useState(false);    /* loading */
 
   const information = async () => {
     const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${match.params.id}`);
     noData((await q).data);
-
     notavailable(true);
   };
   const evolution = async () => {
     const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${match.params.id}`);
-    console.log("Pokemon info", q);
     const spi = (await q).data.species.url;
     const s = axios.get(spi);
-    console.log("Pokemon Species", s);
     const y = (await s).data.evolution_chain.url;
     const ev = axios.get(y);
-    console.log(ev);
     const j = (await ev).data.chain;
     nospecies(j.evolves_to);
-    console.log(j.evolves_to);
   };
 
   if (available) {
@@ -70,10 +64,12 @@ function More({ match }) {
                 <p className="sub-headings">Evolution</p>
                 {i.evolves_to.map((k) => (
                   <p className="list-items">
-                    Final Evolution: {
-                    k.species.name ===data.name ? <p className="oops">You are at final evolution</p>: k.species.name
-                    }
-
+                    Final Evolution:{" "}
+                    {k.species.name === data.name ? (
+                      <p className="oops">You are at final evolution</p>
+                    ) : (
+                      k.species.name
+                    )}
                   </p>
                 ))}
               </div>
