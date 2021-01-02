@@ -27,7 +27,7 @@ function Pokemon() {
     return (
       <div className="container">
         <div className="d-flex justify-content-center">
-          <h1 className="title">Pokedex</h1>
+          <h1 className="title">Dex</h1>
         </div>
         <div className="row">
           {pokemonState.map((p) => (
