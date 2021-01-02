@@ -164,7 +164,7 @@ h1 {
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .card button p {
@@ -196,5 +196,13 @@ p {
 .pokemon-image {
   width: 200px;
   height: auto;
+}
+
+.wrong {
+  color: white;
+}
+
+.oops {
+  color: red;
 }
 /*# sourceMappingURL=pokemon.css.map */

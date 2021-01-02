@@ -11,8 +11,6 @@ function More({ match }) {
 
   const [data, noData] = useState([]);
   const [sp, nospecies] = useState([]);
-  const [evolveFrom, frOm] = useState([]);
-  const [check, checking] = useState(false)
 
   const [available, notavailable] = useState(false);
 
@@ -24,25 +22,16 @@ function More({ match }) {
   };
   const evolution = async () => {
     const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${match.params.id}`);
-    console.log('Pokemon info',q);
+    console.log("Pokemon info", q);
     const spi = (await q).data.species.url;
     const s = axios.get(spi);
-    console.log('Pokemon Species',s);
-    frOm((await s).data.evolves_from_species)
+    console.log("Pokemon Species", s);
     const y = (await s).data.evolution_chain.url;
     const ev = axios.get(y);
     console.log(ev);
     const j = (await ev).data.chain;
     nospecies(j.evolves_to);
-
     console.log(j.evolves_to);
-
-    if(evolveFrom == null){
-      checking(false)
-    }
-    else{
-      checking(true)
-    }
   };
 
   if (available) {
@@ -54,7 +43,11 @@ function More({ match }) {
               <h1 className="title">{data.name}</h1>
             </div>
             <div className="d-flex justify-content-center">
-              <img className="pokemon-image" src={data.sprites.front_default} alt={data.name} />
+              <img
+                className="pokemon-image"
+                src={data.sprites.front_default}
+                alt={data.name}
+              />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
               <p className="sub-headings">
@@ -75,11 +68,13 @@ function More({ match }) {
             {sp.map((i) => (
               <div className="col-lg-12 col-md-12 col-sm-12">
                 <p className="sub-headings">Evolution</p>
-                <p className="list-items">{
-                check ? evolveFrom : data.name
-                }</p>
                 {i.evolves_to.map((k) => (
-                  <p>{k.species.name}</p>
+                  <p className="list-items">
+                    Final Evolution: {
+                    k.species.name ===data.name ? <p className="oops">You are at final evolution</p>: k.species.name
+                    }
+
+                  </p>
                 ))}
               </div>
             ))}

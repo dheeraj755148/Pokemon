@@ -150,10 +150,12 @@ h1 {
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
-    padding: 5px;
+    padding: 10px;
     p {
       margin: 0 auto;
     }
+
+
 
   }
 }
@@ -182,4 +184,10 @@ p {
 .pokemon-image{
   width: 200px;
   height: auto;
+}
+.wrong{
+  color: white;
+}
+.oops{
+  color: red;
 }

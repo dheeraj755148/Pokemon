@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/pokemon.css";
 import { Link } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function Pokemon() {
   useEffect(() => {
@@ -13,7 +14,7 @@ function Pokemon() {
 
   const pokemonData = [];
   const apicalls = async () => {
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 20; i++) {
       const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
       pokemonData.push((await q).data);
     }
@@ -43,7 +44,7 @@ function Pokemon() {
                 <p className="card-text">
                   {p.types.map((t) => t.type.name).join(", ")}
                 </p>
-                <button>
+                <button className="button-animation">
                   <Link
                     style={{ color: "#fff", textDecoration: "none" }}
                     to={`/${p.id}`}
