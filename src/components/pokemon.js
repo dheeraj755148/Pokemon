@@ -3,24 +3,46 @@ import axios from "axios";
 import "../style/pokemon.css";
 import { Link } from "react-router-dom";
 import pokeball from "../pokeball.png";
+import InfiniteScroll from "react-infinite-scroller";
 
 function Pokemon() {
-  useEffect(() => {
-    apicalls();
-  }, []);
-
   const [available, notavailable] = useState(false);
   const [pokemonState, pokemonStateNo] = useState([]);
   const [search, searchSpace] = useState(null);
+  const [hasMoreItems, noMoreItems] = useState(true);
+  const [count, countDef] = useState();
+  const [iterate, iterationUpdate] = useState(20);
+  useEffect(() => {
+    apicalls();
+    countNess();
+  }, [iterate]);
 
-  const pokemonData = [];
+  const countNess = async () => {
+    const d = axios.get(`https://pokeapi.co/api/v2/pokemon/`);
+    const temp = (await d).data;
+    countDef(temp.count);
+  };
+
   const apicalls = async () => {
-    for (let i = 1; i <= 300; i++) {
+    var pokemonData = [];
+
+    for (var i = 1; i <= iterate; i++) {
       const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
       pokemonData.push((await q).data);
     }
+
     pokemonStateNo(pokemonData);
     notavailable(true);
+  };
+
+  const loadMore = () => {
+    if (iterate === count) {
+      noMoreItems(false);
+    } else {
+      setTimeout(() => {
+        iterationUpdate(iterate + 20);
+      }, 5000);
+    }
   };
 
   function searchTarget(event) {
@@ -115,8 +137,16 @@ function Pokemon() {
               </div>
             </div>
           ))} */}
+          <InfiniteScroll
+            loadMore={loadMore}
+            hasMore={hasMoreItems}
+            useWindow={false}
+            className="row"
+            loader={<div className="loader"> Loading... </div>}
 
-          {itemsT}
+          >
+            {itemsT}
+          </InfiniteScroll>{" "}
         </div>
       </div>
     );

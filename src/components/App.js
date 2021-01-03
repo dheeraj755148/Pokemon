@@ -9,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <Router>
-
           <Switch>
             <Route path="/" exact component={Pokemon} />
             <Route path="/:id" component={Moreinfo} />
