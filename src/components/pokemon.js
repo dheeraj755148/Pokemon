@@ -15,13 +15,14 @@ function Pokemon() {
 
   const pokemonData = [];
   const apicalls = async () => {
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 300; i++) {
       const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
       pokemonData.push((await q).data);
     }
     pokemonStateNo(pokemonData);
     notavailable(true);
   };
+
   function searchTarget(event) {
     let keyword = event.target.value;
     searchSpace(keyword);
@@ -68,21 +69,20 @@ function Pokemon() {
         <div className="d-flex justify-content-center">
           <h1 className="title">PokeDex</h1>
         </div>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <span className="input-group-text" id="basic-addon1">
               <img
                 id="searchEngine"
                 className="pokeball"
                 src={pokeball}
-                alt=""
-                srcset=""
+                alt="Pokeball"
               />
             </span>
           </div>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Search for pokemon"
             aria-label="Username"
             aria-describedby="basic-addon1"
@@ -115,6 +115,7 @@ function Pokemon() {
               </div>
             </div>
           ))} */}
+
           {itemsT}
         </div>
       </div>
