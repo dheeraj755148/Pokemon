@@ -12,7 +12,7 @@ function Pokemon() {
   const [hasMoreItems, noMoreItems] = useState(true);
   const [countm, countDef] = useState();
   const [iterate, iterationUpdate] = useState(100);
-  const [timer, increaseTimer]=useState(5000)
+  const [timer, increaseTimer] = useState(5000);
   useEffect(() => {
     apicalls();
     countNess();
@@ -26,7 +26,6 @@ function Pokemon() {
 
   var pokemonData = [];
   const apicalls = async () => {
-
     for (var i = 1; i <= iterate; i++) {
       const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
       pokemonData.push((await q).data);
@@ -42,7 +41,7 @@ function Pokemon() {
     } else {
       setTimeout(() => {
         iterationUpdate(iterate + 50);
-        increaseTimer(timer+5000)
+        increaseTimer(timer + 5000);
       }, timer);
     }
   };
@@ -113,7 +112,7 @@ function Pokemon() {
             onChange={(e) => searchTarget(e)}
           />
         </div>
-          {/*           {pokemonState.map((p) => (
+        {/*           {pokemonState.map((p) => (
             <div className="card">
               <img
                 className="card-img-top"
@@ -138,15 +137,15 @@ function Pokemon() {
               </div>
             </div>
           ))} */}
-          <InfiniteScroll
-            loadMore={loadMore}
-            hasMore={hasMoreItems}
-            useWindow={false}
-            className="row"
-            loader={<div className="loader"></div>}
-          >
-            {itemsT}
-          </InfiniteScroll>{" "}
+        <InfiniteScroll
+          loadMore={loadMore}
+          hasMore={hasMoreItems}
+          useWindow={false}
+          className="row"
+          loader={<div className="loader"></div>}
+        >
+          {itemsT}
+        </InfiniteScroll>{" "}
       </div>
     );
   } else {
