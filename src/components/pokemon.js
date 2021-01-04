@@ -12,6 +12,7 @@ function Pokemon() {
   const [hasMoreItems, noMoreItems] = useState(true);
   const [countm, countDef] = useState();
   const [iterate, iterationUpdate] = useState(100);
+  const [timer, increaseTimer]=useState(5000)
   useEffect(() => {
     apicalls();
     countNess();
@@ -20,12 +21,11 @@ function Pokemon() {
   const countNess = async () => {
     const d = axios.get(`https://pokeapi.co/api/v2/pokemon/`);
     const temp = (await d).data;
-    console.log(temp);
     countDef(temp.count);
   };
 
+  var pokemonData = [];
   const apicalls = async () => {
-    var pokemonData = [];
 
     for (var i = 1; i <= iterate; i++) {
       const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
@@ -42,7 +42,8 @@ function Pokemon() {
     } else {
       setTimeout(() => {
         iterationUpdate(iterate + 50);
-      }, 6000);
+        increaseTimer(timer+5000)
+      }, timer);
     }
   };
 
@@ -112,7 +113,6 @@ function Pokemon() {
             onChange={(e) => searchTarget(e)}
           />
         </div>
-        <div className="row">
           {/*           {pokemonState.map((p) => (
             <div className="card">
               <img
@@ -147,7 +147,6 @@ function Pokemon() {
           >
             {itemsT}
           </InfiniteScroll>{" "}
-        </div>
       </div>
     );
   } else {
