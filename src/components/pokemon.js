@@ -10,8 +10,8 @@ function Pokemon() {
   const [pokemonState, pokemonStateNo] = useState([]);
   const [search, searchSpace] = useState(null);
   const [hasMoreItems, noMoreItems] = useState(true);
-  const [count, countDef] = useState();
-  const [iterate, iterationUpdate] = useState(20);
+  const [countm, countDef] = useState();
+  const [iterate, iterationUpdate] = useState(50);
   useEffect(() => {
     apicalls();
     countNess();
@@ -20,6 +20,7 @@ function Pokemon() {
   const countNess = async () => {
     const d = axios.get(`https://pokeapi.co/api/v2/pokemon/`);
     const temp = (await d).data;
+    console.log(temp)
     countDef(temp.count);
   };
 
@@ -36,11 +37,11 @@ function Pokemon() {
   };
 
   const loadMore = () => {
-    if (iterate === count) {
+    if (iterate === countm) {
       noMoreItems(false);
     } else {
       setTimeout(() => {
-        iterationUpdate(iterate + 20);
+        iterationUpdate(iterate + 100);
       }, 5000);
     }
   };
@@ -142,7 +143,7 @@ function Pokemon() {
             hasMore={hasMoreItems}
             useWindow={false}
             className="row"
-            loader={<div className="loader"> Loading... </div>}
+            loader={<div className="loader"></div>}
 
           >
             {itemsT}

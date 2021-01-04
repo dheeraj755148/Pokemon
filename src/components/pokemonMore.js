@@ -4,15 +4,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/pokemon.css";
 
 function More({ match }) {
-  useEffect(() => {
-    information();
-    evolution();
-  }, []);
+
 
   const [data, noData] = useState([]);    
   const [sp, nospecies] = useState([]); /* for species */
   const [available, notavailable] = useState(false);    /* loading */
 
+
+  useEffect(() => {
+    information();
+    evolution();
+  }, []);
   const information = async () => {
     const q = axios.get(`https://pokeapi.co/api/v2/pokemon/${match.params.id}`);
     noData((await q).data);
