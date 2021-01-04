@@ -41,7 +41,7 @@ function Pokemon() {
       noMoreItems(false);
     } else {
       setTimeout(() => {
-        iterationUpdate(iterate + 100);
+        iterationUpdate(iterate + 50);
       }, 6000);
     }
   };
