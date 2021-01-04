@@ -11,7 +11,7 @@ function Pokemon() {
   const [search, searchSpace] = useState(null);
   const [hasMoreItems, noMoreItems] = useState(true);
   const [countm, countDef] = useState();
-  const [iterate, iterationUpdate] = useState(50);
+  const [iterate, iterationUpdate] = useState(100);
   useEffect(() => {
     apicalls();
     countNess();
@@ -20,7 +20,7 @@ function Pokemon() {
   const countNess = async () => {
     const d = axios.get(`https://pokeapi.co/api/v2/pokemon/`);
     const temp = (await d).data;
-    console.log(temp)
+    console.log(temp);
     countDef(temp.count);
   };
 
@@ -42,7 +42,7 @@ function Pokemon() {
     } else {
       setTimeout(() => {
         iterationUpdate(iterate + 100);
-      }, 5000);
+      }, 6000);
     }
   };
 
@@ -144,7 +144,6 @@ function Pokemon() {
             useWindow={false}
             className="row"
             loader={<div className="loader"></div>}
-
           >
             {itemsT}
           </InfiniteScroll>{" "}
