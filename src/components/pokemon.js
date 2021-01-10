@@ -11,7 +11,7 @@ function Pokemon() {
   const [search, searchSpace] = useState(null);
   const [hasMoreItems, noMoreItems] = useState(true);
   const [countm, countDef] = useState();
-  const [iterate, iterationUpdate] = useState(100);
+  const [iterate, iterationUpdate] = useState(40);
   const [timer, increaseTimer] = useState(5000);
   useEffect(() => {
     apicalls();
@@ -112,31 +112,6 @@ function Pokemon() {
             onChange={(e) => searchTarget(e)}
           />
         </div>
-        {/*           {pokemonState.map((p) => (
-            <div className="card">
-              <img
-                className="card-img-top"
-                src={p.sprites.front_default}
-                alt="Card cap"
-              ></img>
-              <div className="card-body" key={p.id}>
-                <h5 className="card-title" key={p.name}>
-                  {p.name}
-                </h5>
-                <p className="card-text">
-                  {p.types.map((t) => t.type.name).join(", ")}
-                </p>
-                <button className="button-animation">
-                  <Link
-                    style={{ color: "#fff", textDecoration: "none" }}
-                    to={`/${p.id}`}
-                  >
-                    <p>More Info</p>
-                  </Link>{" "}
-                </button>
-              </div>
-            </div>
-          ))} */}
         <InfiniteScroll
           loadMore={loadMore}
           hasMore={hasMoreItems}
